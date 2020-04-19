@@ -5,4 +5,4 @@ for valor in {1..10000};  do
     sleep 0.01
 done
 
-echo "La ejecucion de 01_monopr.sh ha finalizado"
+echo "La ejecucion de 01_sleep.sh ha finalizado"

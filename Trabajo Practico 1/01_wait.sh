@@ -8,4 +8,4 @@ for valor in {1..10000};  do
     wait %mostar
 done
 
-echo "La ejecucion de 01_monopr.sh ha finalizado"
+echo "La ejecucion de 01_wait.sh ha finalizado"
