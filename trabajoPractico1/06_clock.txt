@@ -1,0 +1,10 @@
+Al ejecutar el comando xclock -d -update -1, genero el proceso, corriendo en primer plano, correspondiente a un reloj digital en el escritorio grafico
+
+1- Una vez creado, si oprimimos la combinacion Crlt + Z, lo que hace es pausar el proceso de xclock pero no lo detiene, sigue estando en memoria. 
+Al ejecutar fg %1, lo que hace es darle inicio nuevamente al proceso de xclock en primer plano, lo que sigue generando que no tenga control de la consola. 
+
+2- Si presionamos nuevamente Crlt + Z, nuevamente el proceso se pausa, pero sigue cargado en memoria. Al ejecutar en la consola bg %1, volvemos a iniciar el proceso,
+pero esta vez se ejecuta en segundo plano, por lo que tenemos control de la consola al mismo tiempo de que el reloj se esta ejecutando.
+
+3-Para inciar directamente el proceso en segundo plano y poder tener control de la consola lo que deberiamos hacer es ejecutar el comando de creacion con & al final,
+es decir, xclock -d -update -1 &.
