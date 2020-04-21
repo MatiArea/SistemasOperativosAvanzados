@@ -1,0 +1,13 @@
+Fabricante del Sistema: 
+System manufacturer
+ 
+Version del Procesador: 
+AMD A8-3870 APU with Radeon(tm) HD Graphics
+ 
+Fecha de inicio de la BIOS: 
+05/27/2014
+ 
+Memoria máxima que el sistema permite: 
+128 GB
+ 
+ 
