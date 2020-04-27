@@ -1,0 +1,15 @@
+se usa para establecer o recuperar la afinidad de CPU de un proceso en ejecución dado su PID o para lanzar
+un nuevo COMANDO con una afinidad de CPU dada. 
+La afinidad de la CPU es una propiedad del planificador que "vincula" un proceso a un conjunto dado de CPU en el sistema.
+
+1- El comando taskset lo que nos permite hacer es establecer o recuperar la afinidad de un proceso de CPU, o tambien nos permite
+ejecutar un nuevo comando/proceso con una determinada afinidad de cpu que querramos darle. 
+Cuando hablamos de afinidad de cpu hablamos de la vinculacion a un proceso/subproceso/comando a un determinado nucleo o un conjunto de 
+nucleos del procesados, es decir a una o mas cpu.
+
+2- El comando es mejor usarlo cuando queremos evitar los problemas de cache. No es una actividad que se recomendable porque, por ejemplo
+en sistemas linux, el planificador trata de mantener los procesos en la misma cpu para mejorar el rendimiento. 
+No es recomendable utilizarlo cuando tenemos un sistema con arquitectura no uniforme, ya que tiene a ser muy complicado. 
+Si decidimos hacer un cambio de afinidad de cpu, debemos tener en cuenta de que existe una afinidad completa entre dos CPU virtuales
+implementadas en el mismo núcleo mediante hiperprocesamiento, hay una afinidad parcial entre dos núcleos en el mismo procesador físico, 
+y no hay afinidad entre procesadores físicos separados.

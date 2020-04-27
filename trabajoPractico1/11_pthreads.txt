@@ -1,0 +1,26 @@
+
+1- pthread_create()
+    Se utiliza para la creacion de un nuevo hilo. Como parametro recibe el id del hilo y los atributos que quisieramos darle al nuevo hilo. 
+    En el caso que la utilizamos es cuando queremos crear un nuevo hilo para ejecutar nuestro proceso.
+
+2- pthread_join()
+    Suspende la ejecucion del hilo activo hasta que se finalice la ejecucion del proceso que se cargo en el hilo pasado por parametro.
+    Lo podemos usar cuando queremos lograr que nuestros procesos cargados en los hilos se ejecuten de manera ordenada. 
+
+3- pthread_mutex_lock()
+    Con este metodo lo que logramos es pedir el acceso a la variable mutex y bloquear nuestro hilo hasta que este lo obtenga.
+
+4- pthread_mutex_trylock()
+    Permite pedir acceso al mutex pero devuelve inmediatamente un valor, lo que nos indica si la variable mutex esta bloqueado por otro hilo.
+    Podriamos usarlo cuando queremos ejecutar un proceso solamente si el mutex esta liberado, o para saber el estado del mutex en un 
+    determinado momento de la ejecucion de los hilos.
+
+5- pthread_cond_wait()
+    Bloquean un hilo por medio de la variable condicion, pasada como parametro. Siempre que este tenga el mutex bloqueado.
+
+6- pthread_cond_signal()
+    Desbloquea uno de los hilos que esta bloquedo por la variable condicion, la cual es pasada por parametro, siempre y cuando haya un hilo
+    esperando. 
+
+7- pthread_cond_broadcast()
+    Desbloquea todos los hilos que estan en la cola de espera, bloqueados por la variable condicion que se pasa como parametro.
