@@ -2,8 +2,9 @@
 
 echo "El PID del proceso es $$"
 
-#trap 'Interrupcion detectada' SIGINT
-trap 'echo Detenido, kill $$' SIGTSTP
+trap 'echo Interrupcion detectada' SIGINT
+trap 'echo Suspender ejecución; kill $$' SIGTSTP
+trap 'echo Fin de script' EXIT
 
 while [ true ]; do
 
@@ -11,6 +12,3 @@ while [ true ]; do
     sleep 1
 
 done
-
-
-
