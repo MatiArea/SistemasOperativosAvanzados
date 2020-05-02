@@ -1,7 +1,3 @@
-se usa para establecer o recuperar la afinidad de CPU de un proceso en ejecución dado su PID o para lanzar
-un nuevo COMANDO con una afinidad de CPU dada. 
-La afinidad de la CPU es una propiedad del planificador que "vincula" un proceso a un conjunto dado de CPU en el sistema.
-
 1- El comando taskset lo que nos permite hacer es establecer o recuperar la afinidad de un proceso de CPU, o tambien nos permite
 ejecutar un nuevo comando/proceso con una determinada afinidad de cpu que querramos darle. 
 Cuando hablamos de afinidad de cpu hablamos de la vinculacion a un proceso/subproceso/comando a un determinado nucleo o un conjunto de 
@@ -13,3 +9,14 @@ No es recomendable utilizarlo cuando tenemos un sistema con arquitectura no unif
 Si decidimos hacer un cambio de afinidad de cpu, debemos tener en cuenta de que existe una afinidad completa entre dos CPU virtuales
 implementadas en el mismo núcleo mediante hiperprocesamiento, hay una afinidad parcial entre dos núcleos en el mismo procesador físico, 
 y no hay afinidad entre procesadores físicos separados.
+
+3- 
+    I- El comando task, para leer la afinidad actual de un proceso, lo podemos utilizar de 2 maneras: 
+        a. taskset -p PID: de esta forma estariamos leyendo la afinidad del proceso por medio de una mascara.
+        b. taskset -cp PID: utilizandolo de esta forma, nos devuelve la lista de las cpu con la cual el proceso tiene afinidad
+
+    II- Para asignarle una nueva afinidad a un proceso, nos pasa de igual manera que al leer, podemos hacerlo de 2 formas diferentes:
+        a. taskset -p mascara PID: de esta forma estariamos asignandole la afinidad por medio de mascara
+        b. taskset -cp listaIdCpus PID: de esta fora estamos asignandole la afinidad por medio de los id de los procesadores en los cuales queremos que se ejecute
+    Tambien podemos asignarle una nueva afinidad al momento de ejecutarlo por primera ves, para hacer esto debemos ejecutar el comando taskset de la siguiente manera:
+        a.taskset -c listaIdCpus COMANDO: con esto lo que hacemos es indicarle el id del procesador en el cual queremos que se ejecute nuestro proceso

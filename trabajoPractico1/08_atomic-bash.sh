@@ -1,3 +1,5 @@
+#Podemos simular un semaforo con el comando WAIT
+
 #!/bin/bash
 echo "-----Simulando Semaforo-----"
 
@@ -9,6 +11,6 @@ echo "Proceso 2 creado con exito" &
 wait $pidProcess
 
 echo "---Mostrando resultados---"
-echo "El proceso 1, con PID "$pidProcess", finalizo con estado: "$?
+echo "Finalizando proceso 1, con PID "$pidProcess" ..."
 wait $!
-echo "El proceso 2, con PID "$!", finalizo con estado: "$?
+echo "Finalizando proceso 2, con PID "$!" ..."
