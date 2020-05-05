@@ -1,0 +1,14 @@
+En este codigo, se ejecuta de manera correcta el algoritmo, devolviendo cero como error en todas las ejecuciones que se quieran realizar. 
+Lo que se realiza es bloquear el acceso al sector critico cuando uno de los hilos de ejecucion esta realizando la accion para que el no se generen inconsistencias
+en la variable.
+Lo que sucede es que antes de realizar la accion de incrementar el contador, se va a ejecutar una funcion, que es la encargada de limitar el acceso al sector critico,
+indicandole el id que le corresponde, para demostrar el interes de ingresar a la seccion critica a hacer alguna accion.
+Esta funcion lo que hace es darle valor verdadero al array de procesos, que es el que indica el interes del proceso en ingresar al sector critico, y ademas calcula
+el valor del turno del proceso que le toca ingresar. Si ambos procesos entran en un tiempo casi igual, el valor que queda almacenado es el que grabo el ultimo proceso que entro, por lo que va a permitirle el ingreso 
+al primer proceso que intento grabar, ya que el bucle repetitivo va a dar verdadero para el ultimo que escribio y entra en espera.
+
+Esto sucede porque es necesario brindar una exclusion mutua en el codigo al momento de acceder a la variable count, ya que esta variable es nuestra seccion critica,
+si nosotros no hacemos algo para que el acceso a esta variable, el valor que tenga en el momento de utilizarla puede ser corrupto y no ser el que realmente deseamos 
+leer. 
+
+El numero de hilos que intervienen en el algoritmo es de 2.

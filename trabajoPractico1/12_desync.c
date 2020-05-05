@@ -39,9 +39,13 @@ int main(){
     }
 
     for(i=0;i<LOOPS;i++){
-        rc1 = pthread_join(job1_threads[i],NULL);
         rc = pthread_create(&job2_threads[i], NULL, job2, NULL);
     }
+
+    for ( i = 0; i < LOOPS; i++) {
+        rc1 = pthread_join(job1_threads[i],NULL);
+    }
+    
     
     printf("Finished. The value of 'ac' is: %d\n", ac);
 }

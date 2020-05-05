@@ -7,6 +7,7 @@
 
 int sticks = 5;
 int arrayComensales[MAXPHILOSOPHERS];
+pthread_mutex_t mutexLock;
 
 
 void *tomarPalillo(void *id){
@@ -14,6 +15,8 @@ void *tomarPalillo(void *id){
 
     while (arrayComensales[idComensal] < MINSTICKS) {
 
+        pthread_mutex_lock(&mutexLock);
+        
         if (sticks >= 1){
            
             printf("Tomando palillo comensal %ld \r\n",idComensal);
@@ -22,12 +25,17 @@ void *tomarPalillo(void *id){
             
         }
 
+        pthread_mutex_unlock(&mutexLock);        
+
     }
 
+    pthread_mutex_lock(&mutexLock);
+            
     printf("El comensal numero %ld esta comiendo \r\n",idComensal);
     sticks += 2;
     printf("Devolviendo palillos \r\n");
     
+   pthread_mutex_unlock(&mutexLock);
     pthread_exit(0);
     
 }
@@ -37,6 +45,8 @@ int main() {
     long idThread;
     pthread_t thread[MAXPHILOSOPHERS];
     long returnThrearValue;
+
+    pthread_mutex_init(&mutexLock,NULL);
 
     for ( idThread = 0; idThread < MAXPHILOSOPHERS; idThread++) {
         arrayComensales[idThread]=0;

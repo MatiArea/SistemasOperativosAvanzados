@@ -17,20 +17,21 @@ void *tomarPalillo(void *id){
     long idComensal = (long) id;
 
     while (arrayComensales[idComensal] < MAXSTICKS) {
+        while (pthread_mutex_trylock(&mutexLock)) {
 
-        pthread_mutex_lock(&mutexLock);
-        
-        if (sticks >= MINSTICKS){
-           
-            printf("Tomando palillo comensal %ld \r\n",idComensal);
-            sticks -= 2;                                           //Resta un palillo del centro de la mesa
-            arrayComensales[idComensal] += 2;                      //Indica que el comensal con numero idComensal tiene un palillo mas en su poder
-           //printf("Actualmente hay %d palillos \r\n",sticks);
+            pthread_mutex_lock(&mutexLock);
             
-        }        
+            if (sticks >= MINSTICKS){
+            
+                printf("Tomando palillo comensal %ld \r\n",idComensal);
+                sticks -= 2;                                           //Resta un palillo del centro de la mesa
+                arrayComensales[idComensal] += 2;                      //Indica que el comensal con numero idComensal tiene un palillo mas en su poder
+                //printf("Actualmente hay %d palillos \r\n",sticks);
+                
+            }        
 
-        pthread_mutex_unlock(&mutexLock);        
-
+            pthread_mutex_unlock(&mutexLock);        
+        }
     }
     pthread_exit(0);
 }
@@ -40,16 +41,18 @@ void *devolverPalillo(void *id){
     long idComensal = (long) id;
 
     while (arrayComidos[idComensal] == 0){
-        if(arrayComensales[idComensal] == 2){
-            pthread_mutex_lock(&mutexLock);
-                    
-            printf("El comensal numero %ld esta comiendo \r\n",idComensal);
-            sticks += 2;                                                   //Suma 2 palillos al centro de la mesa para que pueda ser usados por los demas comensales    
-            arrayComensales[idComensal] = 0;                               //Indica que el comensal con numero idComensal dejo de tener 2 palillos
-            arrayComidos[idComensal] = 1;                                  //Indica que el comensal con numero idComensal termino de comer y devolvio los palillos
-            printf("Devolviendo palillos \r\n");
-            
-            pthread_mutex_unlock(&mutexLock);
+        while (pthread_mutex_trylock(&mutexLock)) {
+            if(arrayComensales[idComensal] == 2){
+                pthread_mutex_lock(&mutexLock);
+                        
+                printf("El comensal numero %ld esta comiendo \r\n",idComensal);
+                sticks += 2;                                                   //Suma 2 palillos al centro de la mesa para que pueda ser usados por los demas comensales    
+                arrayComensales[idComensal] = 0;                               //Indica que el comensal con numero idComensal dejo de tener 2 palillos
+                arrayComidos[idComensal] = 1;                                  //Indica que el comensal con numero idComensal termino de comer y devolvio los palillos
+                printf("Devolviendo palillos \r\n");
+                
+                pthread_mutex_unlock(&mutexLock);
+            }
         }
     }
 

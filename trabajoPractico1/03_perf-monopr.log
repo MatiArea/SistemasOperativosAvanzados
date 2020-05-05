@@ -1,0 +1,26 @@
+Performance counter stats for './SistemasOperativosAvanzados/trabajoPractico1/01_monopr.sh':
+
+            101,65 msec task-clock                #    0,868 CPUs utilized          
+                15      context-switches          #    0,148 K/sec                  
+                 1      cpu-migrations            #    0,010 K/sec                  
+               591      page-faults               #    0,006 M/sec                  
+       322.593.009      cycles                    #    3,173 GHz                      (47,12%)
+        79.713.751      stalled-cycles-frontend   #   24,71% frontend cycles idle     (52,17%)
+        81.371.080      stalled-cycles-backend    #   25,22% backend cycles idle      (53,98%)
+       354.122.132      instructions              #    1,10  insn per cycle         
+                                                  #    0,23  stalled cycles per insn  (52,88%)
+        85.274.977      branches                  #  838,880 M/sec                    (47,83%)
+         1.269.053      branch-misses             #    1,49% of all branches          (46,02%)
+
+       0,117148552 seconds time elapsed
+
+       0,051255000 seconds user
+       0,051255000 seconds sys
+
+El comando perf fue utilizado con la instruccion stat, a la que se le agrego el parametro -o para redirigir la salida a un archivo .log, ya que el archivo generado 
+por el mismo perf, indicandole como instruccion el record, solamente era posible verlo con la instruccion report. Alli se veia completamente todo lo que el planificador
+del sistema operativo iba realizando y todos los cambios de contextos estaban detallados.
+Con la informacion que tenemos arriba, podemos decir de que no hubo muchos cambios de contextos y el sistema operativo solamente lo cambio de CPU en la cual estaba 
+procesandose 1 sola vez. 
+
+

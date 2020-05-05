@@ -1,4 +1,3 @@
-
 1- pthread_create()
     Se utiliza para la creacion de un nuevo hilo. Como parametro recibe el id del hilo y los atributos que quisieramos darle al nuevo hilo. 
     En el caso que la utilizamos es cuando queremos crear un nuevo hilo para ejecutar nuestro proceso.

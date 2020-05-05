@@ -1,0 +1,25 @@
+Performance counter stats for './SistemasOperativosAvanzados/trabajoPractico1/01_multipr.sh':
+
+         38.697,14 msec task-clock                #    3,362 CPUs utilized          
+           362.426      context-switches          #    0,009 M/sec                  
+             1.484      cpu-migrations            #    0,038 K/sec                  
+         3.319.522      page-faults               #    0,086 M/sec                  
+   124.467.453.221      cycles                    #    3,216 GHz                      (49,80%)
+    12.205.525.525      stalled-cycles-frontend   #    9,81% frontend cycles idle     (49,62%)
+    85.663.010.423      stalled-cycles-backend    #   68,82% backend cycles idle      (50,10%)
+    60.128.248.018      instructions              #    0,48  insn per cycle         
+                                                  #    1,42  stalled cycles per insn  (50,20%)
+    13.214.397.770      branches                  #  341,483 M/sec                    (50,38%)
+       122.977.823      branch-misses             #    0,93% of all branches          (49,90%)
+
+      11,509939193 seconds time elapsed
+
+      24,138636000 seconds user
+      14,721266000 seconds sys
+
+El comando perf, al igual que en el caso anterior, fue utilizado con la instruccion stat, a la que se le agrego el parametro -o para redirigir la salida
+a un archivo .log.
+En este caso, podemos ver que casi todos los valores son 10.000 veces mas grandes. Podemos decir que tuvo muchisimos mas cambios de contextos, y en los cuales el sistema 
+operativo tambien decidio cambiar de cpu y la excepsion generada por fallo de pagina aumento drasticamente. 
+
+

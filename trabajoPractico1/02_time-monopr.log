@@ -1,2 +1,11 @@
-0.08user 0.02system 0:00.12elapsed 91%CPU (0avgtext+0avgdata 5060maxresident)k
-0inputs+0outputs (0major+603minor)pagefaults 0swaps
+0:00.12 elapsed
+0.08 user
+0.02 system
+91% CPU (0 avgtext + 0 avgdata 5060 maxresident)k
+0 inputs + 0 outputs (0 major + 603 minor)pagefaults
+0 swaps
+
+La ejecucion del comando time fue time ./01_monopr.sh. Una vez redirigida la salida con >> a un archivo .log, di un pequeño formato para que puedan distinguirse
+los valores devueltos, ya que la orden -o que figura en el man time me dice que no es valida.
+Se puede ver que el tiempo de ejecucion es muy poco, tiene un total de 12 milisegundo, usa un 91 % del procesamiento de la CPU, no comparte ningun tipo de dato y 
+el proceso ocupo 5060 kilobytes en memoria al momento de la ejecucion.

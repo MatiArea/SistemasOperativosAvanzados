@@ -1,0 +1,53 @@
+seconds time elapsed 0,112640781
+seconds user  0,047593000
+seconds sys 0,059492000
+
+Performance counter stats for './SistemasOperativosAvanzados/trabajoPractico1/01_monopr.sh':
+
+      322.354      cache-misses                                                
+
+      0,106895809 seconds time elapsed
+
+      0,080307000 seconds user
+      0,024092000 seconds sys
+
+Performance counter stats for './SistemasOperativosAvanzados/trabajoPractico1/01_monopr.sh':
+
+      7.523.488      cache-references                                            
+
+      0,109801813 seconds time elapsed
+
+      0,067386000 seconds user
+      0,037904000 seconds sys
+
+
+
+
+#DATOS TOMADOS CON LA AFINIDAD AL PROCESADOR CON ID 0
+
+seconds time elapsed 0,114341642
+seconds user 0,073495000
+seconds sys 0,036747000
+
+Performance counter stats for 'taskset -c 0 ./01_monopr.sh':
+      321.157      cache-misses                                                
+
+      0,114449558 seconds time elapsed
+
+      0,047391000 seconds user
+      0,063188000 seconds sys
+
+Performance counter stats for 'taskset -c 0 ./01_monopr.sh':
+
+      6.636.896      cache-references                                            
+
+      0,117190142 seconds time elapsed
+
+      0,056893000 seconds user
+      0,053100000 seconds sys
+
+
+Al usar con el comando taskset, lo que estamos haciendo es tomar la Performance del proceso cuando tiene afinidad con un nucleo en particular.
+A grandes rasgos vemos que los valores obtenidos entre tener afinidad con un cpu y no tenerla son muy parecidos. Lo que si disminuye en unos valores
+que pueden ser considerables es cache references
+

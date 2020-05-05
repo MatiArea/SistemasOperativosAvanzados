@@ -1,2 +1,11 @@
-30.40user 15.43system 0:13.30elapsed 344%CPU (0avgtext+0avgdata 6660maxresident)k
-0inputs+0outputs (0major+3899987minor)pagefaults 0swaps
+0:13.30 elapsed
+30.40 user
+15.43 system
+344% CPU (0 avgtext + 0 avgdata 6660 maxresident)k
+0 inputs + 0 outputs (0 major + 3899987 minor)pagefaults
+0 swaps
+
+La ejecucion del comando time, al igual que en el caso anterior, fue time ./01_monopr.sh y se redirigio la salida con >> a un archivo .log
+A comparacion con el archivo anterior 02_time-monopr, notamos que hay un aumento en el tamano final de ejecucion del script 01_monopr.sh. El tiempo de ejecucion
+es aproximadamente 10000 veces mas grandes, a nivel milisegundos. El uso del CPU es casi un 300% mayor. El proceso, en memoria ocupa unos 1200 kilobytes mas y
+las paginas con errores/secundarias se elevo en un gran numero. 

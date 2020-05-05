@@ -1,0 +1,17 @@
+Lo que realiza el algortimo en este ejercicio es crear 2 hilos de ejecucion y modificar una variable que esta directamente guardada en memoria, incrementandola 
+hasta que se llegue al maximo definido como constante. Lo que sucede es que ambos procesos estan usando la variable sin ningun tipo de bloqueo antes
+que permita uno a la vez acceder a la porcion de memoria donde esta alojado el dato, por lo que el valor que modifica es el ultimo que leyo
+pero eso no quiere decir que sea el valor que tiene la variable justo en el momento de la operacion.
+
+El algortimo de Peterson es una mejora del algortimo de Dijkstra que nos permite, de una manera mas simple, acceder a un recurso compartido dentro de lo que 
+llamamos como seccion critica. 
+Se basa en los turnos planteados en las versiones de Dijkstra y son 2 funciones que permite que 2 hilos de ejecucion entren a la seccion critica sin 
+generar inconsistencias.
+
+Al momento de iniciar el proceso, ambos hilos de ejecucion invocan a la funcion correspondiente para que le de el permiso para entrar a la seccion critica, esta
+le dara el poder de ingreso o lo hara esperar hasta que sea seguro entrar a dicha region. 
+La funcion que controla el ingreso a la seccion critica se conforma de una variable turno y un array de interesados (ambos procesos). Cuando algun proceso entra,
+ubica en su posicion dentro del array de interesados el valor true y le pone a la variable turno el opuesto a su id. 
+Si ambos procesos entran en un tiempo casi igual, el valor que queda almacenado es el que grabo el ultimo proceso que entro, por lo que va a permitirle el ingreso 
+al primer proceso que intento grabar, ya que el bucle repetitivo va a dar verdadero para el ultimo que escribio y entra en espera.
+

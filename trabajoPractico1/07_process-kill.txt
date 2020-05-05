@@ -1,0 +1,11 @@
+Las pruebas realizadas para ver los resultados fueron 2:
+
+    1-Primero lo que hice fue probar dentro de la misma consola, tecleando Ctrl+c y Ctrl+z para ver si me mostraba los mensajes. Ademas de mostrar los valores 
+    de las acciones realizadas, me mostraba los mensajes correctamente.
+    
+    2-Segundo para corroborar que todo funcionaba correctamente, busque la lista de señales dentro del comando kill y con kill -l liste las señales que le puedo
+    mandar a un proceso. Una vez identificadas le envie al proceso, cuyo id lo muestro al inicio del proceso, las siguientes señales:
+        ->kill -s SIGTSTP
+        ->kill -s SIGINT
+        ->Kill -n 20    //Represena SIGTSTP pero en numero
+        ->kill -n 2     //Represena SIGINT en numero
