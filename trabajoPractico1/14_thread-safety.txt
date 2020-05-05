@@ -1,0 +1,10 @@
+1- El thread safety es un concepto que se aplica dentro de la programacion al momento de crear codigo para ejecutar
+con multi-hilo, que nos permite hacer un acceso a los recursos de manera ordenada y 1 hilo de ejecucion a la vez.
+Esta tecnica garantiza la coherencia de la memoria, haciendo que multiples hilos puedan escribir/leer un mismo
+objeto a la vez sin errores de memoria.
+
+2-Para que se considerarse thread safe, 
+
+3-Debemos garantizarlo cuando queremos que el resultado que nos devuelva ese proceso sea algo fiable y seguro, y que los
+datos que sean utilizados por el proceso no esten corruptos, por lo que se deben sincronizar los accesos y la escritura a
+esos datos

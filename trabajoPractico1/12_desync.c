@@ -36,10 +36,10 @@ int main(){
 
     for(i=0; i<LOOPS; i++){
         rc1 = pthread_create(&job1_threads[i], NULL, job1, NULL);
-        rc1 = pthread_join(job1_threads[i],NULL);
     }
 
     for(i=0;i<LOOPS;i++){
+        rc1 = pthread_join(job1_threads[i],NULL);
         rc = pthread_create(&job2_threads[i], NULL, job2, NULL);
     }
     

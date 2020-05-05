@@ -1,0 +1,57 @@
+Para poder realizar garantizar una exclusion mutua(mutex) entre procesos bash, podemos hacerlo de diferentes maneras:
+1-Utilizando diferentes permisos de usuario para acceder a un recurso 
+2-Utilizando las condiciones de creacion para archivos/directorios
+3-Utilizando el comando wait
+4-Utilizando el comando lockfile
+5-Utilizando el comando flock
+
+Desarrollando cada una de las opciones planteadas anteriormente, brevemente puedo decir que: 
+
+1,2- Lo planteado en estas 2 opciones van muy relacionadas, ya que si implemento la solucion pensando en la opcion 1
+puedo hacer que un proceso, cuando inicie, cambie los permisos de un archivo/directorio para que otro proceso no pueda
+acceder al mismo tiempo.
+A su vez, con la opcion numero 2, puedo verificar si se tiene acceso a un determinado archivo/directorio o si este existe
+al momento de usarlo. 
+
+3- Si yo quiero utilizar el comando wait, podria hacer que varios procesos se ejecuten de manera que ninguno use 
+el mismo recurso en el mismo momento, pasandole el id del proceso por parametro, siempre y cuando este se encuentre
+dentro del mismo contexto. Lo que se genera es que se espere que se termine de ejecutar el proceso con el PID pasado 
+por parametro, en el caso de que este falle nos devolvera un -1 como codido de error. 
+
+4- Con el comando lockfile lo que podemos hacer es crear un archivo tipo semaforo. Con esto lo que hago es que cada vez
+que un proceso quiere empezar a realizar una accion en un determinado recurso, tiene que verificar si ese archivo
+existe o no. Es un archivo temporal, que se eliminara una vez que se termine de usar el recurso compartido.
+
+5- Con este comando lo que vamos a lograr es administrar los bloqueos desde un script o desde la terminal. Podemos bloquear
+tanto un archivo, como un directorio. Tiene 3 formas distintas de invocarlo.
+
+Un pequeno ejemplo podria ser: 
+(Implementandolo de la forma 1,2):
+#!/bin/bash
+
+if [[ -e ./test.txt ]]; then 
+    if [[ -w ./test.txt ]]; then
+        chmod 400 ./test.txt
+        echo "Bloqueado"
+    else 
+        echo "El recurso esta bloqueado"
+        read
+        exit
+    fi
+else
+    echo "Creando el archivo..."
+    touch ./test.txt
+    chmod 400 ./text.txt
+fi
+
+for i in {1..20};do
+    echo $i
+    sleep 5
+done
+
+chmod 777 ./test.txt
+echo "Recurso desbloqueado"
+
+Este pequeno ejemplo lo podriamos modificar para que se transforme en una pequena rutina que me devuelva el estado del 
+recurso y de esta forma poder utilizarlo desde diferentes scripts, en este caso solamente bloquea el recurso y realiza la 
+accion dentro del mismo proceso. 
