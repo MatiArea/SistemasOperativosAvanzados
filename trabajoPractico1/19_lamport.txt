@@ -1,0 +1,19 @@
+El algoritmo toma el nombre porque su solucion hace referencia a la costrumbre de las tiendas en general donde 1 persona toma un numero
+y espera para ser atendido. La persona que esta atendiendo solamente puede atender a una persona a la vez y se las va atendiendo por 
+orden de llegada, que se indica en el numero obtenido. El algoritmo hace referencia a que, la persona que atiende es el recurso
+y la seccion critica de cada cliente es la accion que se realiza cuando es atendido. 
+Ahora, hablando en el ambito de sistemas, el algoritmo fue realizado por Lord Leslie Lamport para implementar
+la exclusión mutua de N procesos o hilos de ejecución.
+El sistema mantiene una variable global que refleja el número de turno del hilo que se está ejecutando en el instante actual. Todos los 
+demas hilos debes esperar hasta que llegue su turno para ingresar a la seccion critica. Una vez que el hilo que se esta ejecutando 
+termina, la variable se incrementa en 1 e ingresa a la seccion critica el hilo que tiene asociado el nuevo numero de la variable 
+global.
+Una vez que se finaliza la ejecución del hilo dentro de su seccion critica, el hilo puede realizar cualquier otra accion y en el caso 
+de que quiera volver a ingresar a esta, el hilo debera pedir otro numero para poder volver a repetir toda la secuencia de pasos. 
+Si varios hilos obvtienen el mismo numero de turno, el algoritmo realiza una accion de desempate para que ingresen de a 1 a su 
+seccion critica. Este se basa en mirar el numero de ID mas bajo, ya que este no se puede repetir; por lo tanto el que tiene el id
+minimo es el hilo que tiene mas prioridad para ingresar a la seccion critica. 
+
+A diferencia del algoritmo de peterson, en mi opinion, creo que la ventaja esta en que los hijos se van a atender en orden de prioridad 
+definida por el id del hilo, a diferencia de peterson que el ingreso es un poco "a la fuerza". Y a su vez tambien es un algoritmo mas 
+optimo ya que toma las fallas que se fueron encontrando en los algoritmos de Dekker y Petterson.

@@ -28,29 +28,32 @@ tanto un archivo, como un directorio. Tiene 3 formas distintas de invocarlo.
 Un pequeno ejemplo podria ser: 
 (Implementandolo de la forma 1,2):
 #!/bin/bash
-
-if [[ -e ./test.txt ]]; then 
-    if [[ -w ./test.txt ]]; then
-        chmod 400 ./test.txt
-        echo "Bloqueado"
-    else 
-        echo "El recurso esta bloqueado"
-        read
-        exit
+lock(){
+    if [[ -e ./test.txt ]]; then 
+        if [[ -w ./test.txt ]]; then
+            chmod 400 ./test.txt
+            echo "Bloqueado"
+        else 
+            echo "El recurso esta bloqueado"
+            read
+            exit
+        fi
+    else
+        echo "Creando el archivo..."
+        touch ./test.txt
+        chmod 400 ./text.txt
     fi
-else
-    echo "Creando el archivo..."
-    touch ./test.txt
-    chmod 400 ./text.txt
-fi
-
-for i in {1..20};do
-    echo $i
-    sleep 5
+    chmod 777 ./test.txt
+    echo "Recurso desbloqueado"
+}
+pid=0
+while pid -ne 5;
+do
+    lock &
+    pid=$((pid+1))
 done
-
-chmod 777 ./test.txt
-echo "Recurso desbloqueado"
+wait
+exit
 
 Este pequeno ejemplo lo podriamos modificar para que se transforme en una pequena rutina que me devuelva el estado del 
 recurso y de esta forma poder utilizarlo desde diferentes scripts, en este caso solamente bloquea el recurso y realiza la 

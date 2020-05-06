@@ -3,8 +3,36 @@ con multi-hilo, que nos permite hacer un acceso a los recursos de manera ordenad
 Esta tecnica garantiza la coherencia de la memoria, haciendo que multiples hilos puedan escribir/leer un mismo
 objeto a la vez sin errores de memoria.
 
-2-Para que se considerarse thread safe, 
+2-Para que se considerarse thread safe, un proceso debe garantizar que no se realice un interbloqueo. Para esto, el proceso debe garantizar que no se cumplan 
+las 4 condiciones necesarias del interbloqueo. Los métodos para prevenir el interbloqueo son de dos tipos. los métodos indirectos consisten en impedir
+la aparición de alguna de las tres condiciones necesarias (Exclusión Mutua, Retención y esperar, No apropiación). Los métodos directos consisten en
+evitar la aparición del círculo vicioso de espera (Círculo vicioso de espera).
+La condicion para garantizar la Exclusión mutua, la solucion es que el sistema operativo soporte la exclusión mutua.
+Para evitar la retencion y espera se puede ir exigiendo que todos los procesos soliciten todos los recursos que necesiten a un mismo tiempo y bloqueando el 
+proceso hasta que todos los recursos puedan concederse simultáneamente.
+La condición de no apropiación puede prevenirse de varias formas. Primero, si a un proceso que tiene ciertos recursos se le niega una nueva solicitud, y se 
+lo obliga a liberar los que ya tiene y pedir nuevamente los recursos completos que necesita. Por otra parte, si un proceso solicita un recurso que actualmente
+está retenido por otro, el sistema operativo puede expulsar al segundo proceso y exigirle que libere sus recursos.
+La condición del círculo vicioso de espera puede prevenirse definiendo una ordenación lineal de los tipos de recursos. Si a un proceso se le han asignado
+recursos de tipo R, entonces sólo podrá realizar peticiones posteriores sobre los recursos de los tipos siguientes a R en la ordenación.
 
 3-Debemos garantizarlo cuando queremos que el resultado que nos devuelva ese proceso sea algo fiable y seguro, y que los
 datos que sean utilizados por el proceso no esten corruptos, por lo que se deben sincronizar los accesos y la escritura a
 esos datos
+
+4- Algunos ejemplos de la vida real que podriamos realizar con un codigo garantizando el thread safe pueden ser: 
+    -> Generar un algoritmo que simule la cola generada en un surtidor de una estacion de servicio. La seccion critica, en este caso, seria uno de los 
+    y los clientes que lleguen a la estacion para cargar en dicho surtidor van a ser los procesos. Lo que debemos lograr es que el dato que el surtidor
+    nos otorga del combustible que tiene almacenado y el combustible que cargo el vehiculo que ingreso(proceso) para poder facturar de manera correcta. 
+    Tendriamos 2 CPU para ejecucion, ya que el surtidor tiene la posivilidad de tomar combustible por el lado derecho y por el lado izquierdo. 
+    Los datos que utilizamos de cantidad de combustible no puede fallar, ya que se le cobraria mal al vehiculo y tambien generaria un error en la cantidad 
+    que queda almacenada en los tanques, por lo que si un vehiculo quiere tomar cierta cantiadad, ese dato no seria fiable.
+  
+    ->Simular la entrada a un estacionamiento, el cual tiene varias posibilidades de ingreso. Cada vehiculo que quiera ingresar o salir del estacionamiento,
+    lo debe hacer 1 a la vez. Llevandolo a un proceso, la cantidad de entradas que el estacionamiento tenga disponible van a ser la cantidad de CPUs que tengamos,
+    la region critica sera nuestro estacionamiento, en cual puede estar simplemente identificado con cantidad de lugares o con algun identificador en particular,
+    por ejemplo interseccion entre filas y columnas del lugar. La cantidad hilos que tengamos en ejecucion es la cantidad de auto que quieran estacionar en el lugar.
+    La accion a realizar al momento de entrar, es devolver si hay una ubicacion libre en ese momento, indicar que se ocupa y la hora de ingreso. Una vez que salio 
+    de la zona critica cualquier entrada puede ser utilizada por otro vehiculo. Al salir, espera poder bloquear la zona critica para indicar que la ubicacion se libero
+    y calcular el monto que debera pagarle a la persona de la ventanilla.
+    

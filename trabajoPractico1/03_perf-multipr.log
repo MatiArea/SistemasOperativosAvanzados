@@ -20,6 +20,7 @@ Performance counter stats for './SistemasOperativosAvanzados/trabajoPractico1/01
 El comando perf, al igual que en el caso anterior, fue utilizado con la instruccion stat, a la que se le agrego el parametro -o para redirigir la salida
 a un archivo .log.
 En este caso, podemos ver que casi todos los valores son 10.000 veces mas grandes. Podemos decir que tuvo muchisimos mas cambios de contextos, y en los cuales el sistema 
-operativo tambien decidio cambiar de cpu y la excepsion generada por fallo de pagina aumento drasticamente. 
+operativo tambien decidio cambiar de cpu y la excepsion generada por fallo de pagina aumento drasticamente. Todo esto se genera ya que en memoria tenemos mas procesos 
+cargados queriendo ejecutarse.
 
 

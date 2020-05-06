@@ -14,11 +14,11 @@ class myThread(threading.Thread):
     def run(self):
         global counter
         while counter < MAXCOUNTER:
-            threadLock.acquire()
+            threadLock.acquire()    #Bloquea la variable candado
         
-            incrementCounter(self.name)
+            incrementCounter(self.name) #Realiza el incremento del contador
 
-            threadLock.release()
+            threadLock.release() #Livero la variable candado
 
 
 def incrementCounter(name):
@@ -29,17 +29,17 @@ def incrementCounter(name):
         print(f"Partial value of counter = {counter}")
 
 
-threadLock = threading.Lock()
-threadsList = []
+threadLock = threading.Lock() #Crea la variable candado
+threadsList = [] 
 
 for idThread in range(MAXTHREAD):
     id = 'Thread '+str(idThread)
-    thread = myThread(idThread,id)
+    thread = myThread(idThread,id) #Se crea una nueva instancia de la clase hilo
     thread.start()
     threadsList.append(thread)
 
 for thread in threadsList:
-    thread.join()
+    thread.join()   #Se espera la ejecucion de otros threads para terminar
 
 print("===== The counter is full ===== ")
 print(f"->Value = {counter}")

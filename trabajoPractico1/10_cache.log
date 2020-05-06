@@ -49,5 +49,7 @@ Performance counter stats for 'taskset -c 0 ./01_monopr.sh':
 
 Al usar con el comando taskset, lo que estamos haciendo es tomar la Performance del proceso cuando tiene afinidad con un nucleo en particular.
 A grandes rasgos vemos que los valores obtenidos entre tener afinidad con un cpu y no tenerla son muy parecidos. Lo que si disminuye en unos valores
-que pueden ser considerables es cache references
+que pueden ser considerables es relacionado con la cache. El valor de cache perdida aumenta y el cache referenciado disminuye, ya que esto nos esta 
+diciendo de que el proceso tuvo mas accesos a memoria para poder ir a buscar datos que perdio de la cache, por esa razon cache misses aumenta y el cache
+references disminuye porque se dejan de tener datos referenciados en memoria.
 

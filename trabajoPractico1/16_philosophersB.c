@@ -25,7 +25,7 @@ void *tomarPalillo(void *id){
             printf("Tomando palillo comensal %ld \r\n",idComensal);
             sticks -= 2;                                           //Resta un palillo del centro de la mesa
             arrayComensales[idComensal] += 2;                      //Indica que el comensal con numero idComensal tiene un palillo mas en su poder
-           //printf("Actualmente hay %d palillos \r\n",sticks);
+           printf("Actualmente hay %d palillos \r\n",sticks);
             
         }        
 

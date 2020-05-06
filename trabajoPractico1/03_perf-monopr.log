@@ -21,6 +21,6 @@ El comando perf fue utilizado con la instruccion stat, a la que se le agrego el 
 por el mismo perf, indicandole como instruccion el record, solamente era posible verlo con la instruccion report. Alli se veia completamente todo lo que el planificador
 del sistema operativo iba realizando y todos los cambios de contextos estaban detallados.
 Con la informacion que tenemos arriba, podemos decir de que no hubo muchos cambios de contextos y el sistema operativo solamente lo cambio de CPU en la cual estaba 
-procesandose 1 sola vez. 
+procesandose 1 sola vez, ya que tenemos 1 solo proceso ejecutandoce y no hay concurrencia de procesos. 
 
 
