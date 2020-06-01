@@ -1,0 +1,24 @@
+Las siguientes directivas al compilador de OpenMP se utilizan para: 
+
+a. #pragma omp parallel
+    Se utiliza para definir una region paralela dentro de nuestra aplicacion. Iniciar una region paralela implica que
+    en tiempo de ejecucion se creara un grupo de hilos. Podemos especificar la cantidad de hilos dentro del codigo o pasando 
+    un parametro por consola, sino el sistema operativo toma, por defecto, una cantidad de hilos disponibles para dicha tarea. 
+
+b. #pragma omp parallel private(a)
+    Con esta directiva, vamos a poder crear una variable privada llamada a, la cual va a estar copiada en cada uno de los procesos
+    de la region paralela.
+
+c. #pragma omp parallel shared(a)
+    Con esta directiva, vamos a poder crear una variable compartida llamada a, la cual va a ser una unica variable que va a ser
+    compartida por cada uno de los procesos que estan dentro de la region paralela de la aplicacion.
+
+d. #pragma omp parallel for
+    Esta directiva nos permite dividir una tarea grande en porciones mas chicas, de una manera simple y muy efectiva. para lograr una
+    ejecucion mas rapida. 
+
+e. omp_get_thread_num()
+    Nos devuelve el numero de ID del Thread.
+
+f. omp_get_num_threads()
+    Nos devuelve la cantidad de Threads activos. 

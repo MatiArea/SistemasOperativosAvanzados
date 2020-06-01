@@ -1,0 +1,45 @@
+Libreria MPI (MPICH/OpenMPI):
+
+a) Instalacion: 
+    Para poder instalarlo en una distribucion de linux (ubuntu) debemos ejecutar el siguiente comando rapido:
+    
+    -> sudo apt-get install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi1.3 libopenmpi-dbg libopenmpi-dev
+    
+    Lo que estamos instalando es lo siguiente: 
+    -> openmpi-bin: Programa de ejecución de códigos paralelos.
+    -> openssh-client, openssh-server: Programa de comunicación (rutinas de control y presentación) entre procesos.
+    -> libopenmpi-dbg: Generador de información de depuración para MPI.
+    -> libopenmpi-dev: Necesario para el desarrollo de programas basados en MPI. 
+
+    Para poder instalarlo en cualquier distribucion de linux debemos seguir los siguientes pasos: 
+        Para los que no tenemos un sistema con soporte para rmp, seguimos los siguientes pasos:
+        1. Descomprimir el archivo openmpi-x.x.x.tar.xxx (Cambiar x.x.x por la versión deseada):
+            tar -xvf openmpi-*
+        
+        2. Nos situamos en la carpeta que habrá generado la descompresión.
+            cd openmpi-*
+        
+        3. Configuramos el archivo de instalación (haciendo uso de los privilegios de superusuario correspondientes a su
+        sistema operativo).
+        Es necesario añadir en el prefijo el directorio de instalación que queremos para OpenMPI. Lo normal sería seleccionar
+        de directorio de instalación “/home/<usuario>/.openmpi”.
+            ./configure --prefix="/home/$USER/.openmpi"
+        
+        4. Realizamos la instalación. 
+            make
+            sudo make install
+        
+        5. Necesitamos incluir en nuestro entorno de ruta la dirección “directorio_de_instalacion/bin”
+        y a la variable de ruta de librerías “directorio_de_instalacion/lib/”. Para sistemas que usen
+        bash tendrán que utilizar export.
+            export PATH="$PATH:/home/$USER/.openmpi/bin"
+            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/$USER/.openmpi/lib/"
+
+b) Compilacion: 
+    Para la compilacion de la aplicacion solamente debemos ejecutar el siguiente comando en la terminal: 
+        mpicc -o nombreArchivoDestinoEjecutable nombreArchivoFuente
+
+c) ejecución:
+    Para la ejecución de la aplicacion el comando es el siguiente:
+        mpirun -np nroProcesadores nombreArchivoDestinoEjecutable //Con n = a la cantidad de procesadores a usar.
+        

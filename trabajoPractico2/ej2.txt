@@ -1,0 +1,14 @@
+Las similitudes que podemos encontrar entre MPI y openMP son:
+    -> Los lenguajes que soportan son C,C++ and Fortran.
+    -> Soportan memoria compartida (MPI desde la version 3 en adelante).
+    -> Son modulos utilizados para la programacion paralela. 
+
+Las diferencias que podemos encontrar son: 
+    -> OpenMP esta incorporada en el compilador, por lo que cada uno de los compiladores tienen una implementacion en especifico.
+    En cambio a MPI la ofrecen varios proveedores diferentes y cualquier version puede ser compilada en cualquiera de los compiladores.
+    -> MPI originalmente fue para memoria distribuida, pero desde la version 3 en adelante soporta memoria distribuida y compartida. 
+    OpenMP solo soporta memoria compartida.
+    -> OpenMP esta basado solamente en el paralelismo entre hilos. MPI esta basado en el paralelismo tanto de hilos como de procesos.
+    -> En MPI los procesos tienen solamente variables locales. En cambio en OpenMP los hilos tienen variables locales y globales.
+    -> En MPI se gastan recursos para enviar mensajes entre procesos. Con OpenMP no hay gastos de recursos ya que hay variables compartidas.
+    -> OpenMP esta basado en directivas y MPI esta basado en mensajes.

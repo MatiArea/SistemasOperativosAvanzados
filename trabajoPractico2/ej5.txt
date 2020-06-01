@@ -1,0 +1,32 @@
+Las siguientes funciones de MPI se utilizan para:
+
+a. MPI_Init(…):
+    Esta funcion inicializa el entorno MPI. Necesita que se les pasen argumentos al momento de la ejecucion en la terminal, los cuales se van a conocer como
+    argc y argv. 
+
+b. MPI_Comm_rank(…):
+    Esta funcion recibe como parametro el entorno MPI y una direccion de memoria de una variable y nos retorna, en la variable,
+    el id del proceso que realizo la llamada a la funcion. 
+
+c. MPI_Comm_size(…):
+    Esta funcion recibe como parametro el entorno MPI y una direccion de memoria de una variable y nos retorna, en la variable,
+    la cantidad de procesos total, los cuales nos definen el tamano del entorno MPI.
+
+d. MPI_Send(…):
+    Con esta funcion lo que podemos hacer es enviarle un mesaje a un proceso determinado. Como parametros recibe:
+    ->La direccion de memoria del buffer de envio.
+    ->La cantidad de elementos a enviar. 
+    ->El tipo de dato de los elementos a enviar por el buffer.
+    ->El destinatario del mensaje.
+    ->Una etiqueta del mensaje.
+    ->El comunicador (entorno MPI).
+
+e. MPI_Recv(…):
+    Esta funcion lo que realiza es recibir un mensaje. Como parametros recibe: 
+    ->La cantidad maxima de elementos que puede recibir.
+    ->El tipo de dato de los elementos que se reciben.
+    ->Una etiqueta.
+    ->El entorno MPI.
+
+f. MPI_Finalize(…):
+    Esta funcion cierra las comunicaciones y libera el entorno MPI.

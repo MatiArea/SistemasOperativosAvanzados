@@ -1,0 +1,15 @@
+Libreria OpenMP:
+
+a) Instalacion: 
+    Para poder instalarlo en una distribucion de linux (ubuntu) debemos ejecutar el siguiente comando rapido:
+    (Necesitamos tener instalado el compilador gcc)
+        -> sudo apt-get install libgomp1
+    
+
+b) Compilacion: 
+    Para la compilacion de la aplicacion solamente debemos ejecutar el siguiente comando en la terminal: 
+        -> gcc archivoFuente.c -o nombreArchivoDestino -fopenmp //-fopenmp indica que vamos a necesitar la libreria OpenMP
+
+c) ejecución:
+    Para la ejecución de la aplicacion el comando es el siguiente:
+        ->OMP_NUM_THREADS=4 ./programa // OMP_NUM_THREADS es donde le vamos a indicar la cantidad de procesadores que utilizaremos
