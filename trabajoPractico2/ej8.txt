@@ -1,0 +1,48 @@
+Files Systems distribuidos: 
+
+-> NFS: es una tecnología para compartir archivos entre el sistema UNIX, soporta una variedad de protocolos.
+El NFS desarrollado por SUN se utiliza para intercambiar datos entre hosts UNIX, si se agrega un host windows, se debera utilizar un 
+servidor samba. Si utilizamos el protocolo NFS tiene que restringirse a la utilización en una red local de confianza puesto que los 
+datos que circulan por la red no están cifrados y los permisos de acceso se conceden en función de la dirección IP del cliente.
+Ventajas NFS: 
+    Reducen el riesgo de que el fallo de un solo equipo impida acceder a los datos.
+    Proporcionan ubicaciones centralizadas para los datos que deben o deberían estar compartidas entre todos los usuarios.
+    Simplifican el acceso a los datos existentes en sistemas más veloces.
+    Proporcionan la oportunidad de centralizar operaciones administrativas, tales como la copia de seguridad de los datos (back-ups).
+    Proporcionan interoperabilidad y flexibilidad. 
+
+-> CIFS: es un protocolo para compartir archivos, impresoras y otros dispositivos a través de la red desarrollado por Microsoft
+e implementado en sus sistemas operativos como una de las formas más sencillas de conectarse con otros ordenadores y dispositivos
+a través de la red local. 
+Compartir archivos con otros ordenadores conectados a la red a través de este protocolo es muy sencillo y cómodo pero es altamente
+peligroso ya que el trafico de informacion no esta cifrado. Actualmente se considera obsoleto, porque la mayoría de los sistema
+modernos de almacenamiento de datos utilizan los protocolos de intercambio de archivos Server más robustos.
+Ventajas CIFS:
+    Una enorme base de clientes instalada (no solo Windows, tambien en linux y macos).
+    Hay una buena implementación de servidor de código abierto disponible (Samba).
+    Alto rendimiento.
+    Gran cantidad de funciones de gestión / administración.
+
+-> CEPH: es un sistema de archivos compatible con POSIX creado sobre el almacén de objetos distribuidos de Ceph, RADOS.
+Ceph proporciona almacenamiento escalable empresarial al tiempo que mantiene los costos de CAPEX y OPEX en línea con los
+precios subyacentes de los discos básicos. Como nos permite desacoplar datos del almacenamiento físico de hardware, nos hace que 
+Ceph sea ideal para la nube, Openstack, Kubernetes y otras cargas de trabajo basadas en microservicios y contenedores,
+ya que puede abordar eficazmente las necesidades de almacenamiento de grandes volúmenes de datos.
+Ventajas de CEPH:
+    La principal ventaja cuuando hablamos de Ceph es que proporciona interfaces para múltiples tipos de 
+    almacenamiento dentro de un solo clúster, eliminando la necesidad de múltiples soluciones de almacenamiento de proveedores y hardware
+    especializado. 
+    Asignaciones de clave-valor a nivel de objeto.
+    Codificación de borrado para protección de datos.
+    Lectura y escritura parcial o completa y transacciones atómicas.
+    Aprovisionamiento delgado de almacenamiento en bloque para la optimización del uso del disco.
+
+
+Como grandes diferencias entre ellos, luego de toda esta descripcion en particular, podria decir que CIFS es un protocolo con estado, 
+NFS es un protocolo sin estado, y ambos son a un nivel de conexiones pequenas (mas alla de que son antiguas).
+CIFS es un protocolo de uso compartido para conexiones de red, tiene un requisito más alto en cuanto a la confiabilidad
+de la transmisión de la red, generalmente utiliza TCP / IP. NFS se usa para la transmisión independiente y puede usar TCP o UDP. 
+Y comparando ambas 2 con CEPH, esta ultima ya es a nivel empresarial, grandes empresas proveen servicion bajo este protocolo (por ejemplo
+redhat), su utilizacion esta muy ligada a los usuarios que mantienen almacenamiento de bloques de datos con un alto crecimiento. Nos brinda
+seguridad y mucha mas rapidez al momento de la circulacion de informacion.
+

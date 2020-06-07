@@ -1,0 +1,6 @@
+Para implementar una seccion critica con OpenMP podemos utilizar la sentencia #pragma omp critical.
+Con esta sentencia lo que vamos a hacer es que una porcion de codigo determinada se ejecute por 1 thread a la vez.
+Para crearla de manera correcta, se le debe pasar un parametro, que es su nombre, los cuales son conocidos de manera global por el 
+main principal. 
+Cuando definimos un omp critical de #pragma, lo que hacemos es que cada uno de los thread queden esperando justo antes de la barrera
+hasta que la seccion critica quede liberada y pueda ejecutar la porcion de codigo. 

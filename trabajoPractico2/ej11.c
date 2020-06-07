@@ -15,9 +15,10 @@ int main (int argc, char *argv[])
     /* toma la cantidad total de procesos */
     total = omp_get_num_threads();
 
-    #pragma omp barrier
+    #pragma omp barrier //Barrera 1
     printf( "HOLA MUNDO: proceso %d de %d\n", actual, total );
-    printf("El total de procesos es %d \r\n",total);
+    #pragma omp barrier //Barrera 2
+    printf("CHAU MUNDO: proceso %d de %d \r\n",actual,total); //Nuevo printf agregado
 
   }
 
