@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         printf("ERROR!, La cantidad de parametros enviados no es valida");
     }
     
-
+    MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize(); //Finalizo MPI. Se destruye MPI_COMM_WORLD   
     return 0;
 }
