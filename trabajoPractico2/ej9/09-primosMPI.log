@@ -1,0 +1,23 @@
+# started on Tue Jun  9 11:14:26 2020
+
+
+ Performance counter stats for 'mpirun --allow-run-as-root -n 4 ./primos_mpi 10000':
+
+            390,69 msec task-clock                #    1,228 CPUs utilized          
+             4.136      context-switches          #    0,011 M/sec                  
+               177      cpu-migrations            #    0,453 K/sec                  
+             8.869      page-faults               #    0,023 M/sec                  
+     1.023.865.656      cycles                    #    2,621 GHz                      (52,03%)
+       171.520.783      stalled-cycles-frontend   #   16,75% frontend cycles idle     (51,08%)
+       367.610.858      stalled-cycles-backend    #   35,90% backend cycles idle      (51,27%)
+       546.514.250      instructions              #    0,53  insn per cycle         
+                                                  #    0,67  stalled cycles per insn  (47,97%)
+       105.507.145      branches                  #  270,053 M/sec                    (48,92%)
+         3.527.020      branch-misses             #    3,34% of all branches          (48,73%)
+
+       0,318251812 seconds time elapsed
+
+       0,289177000 seconds user
+       0,110926000 seconds sys
+
+

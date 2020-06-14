@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 
     if (rank == 0) {
         strcpy(message,"Mensaje enviado desde proceso 0");
+        printf("%s","Enviando mensaje desde root \r\n");
         for (int i = 1; i <= (totalProcs-1); i++) {
             MPI_Send(&message, strlen(message), MPI_CHAR, i, 0, MPI_COMM_WORLD);
         }        

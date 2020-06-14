@@ -1,0 +1,23 @@
+# started on Tue Jun  9 11:17:02 2020
+
+
+ Performance counter stats for './primos_omp 10000':
+
+            100,01 msec task-clock                #    2,432 CPUs utilized          
+                26      context-switches          #    0,260 K/sec                  
+                 1      cpu-migrations            #    0,010 K/sec                  
+                77      page-faults               #    0,770 K/sec                  
+       283.896.730      cycles                    #    2,839 GHz                      (41,21%)
+         4.765.380      stalled-cycles-frontend   #    1,68% frontend cycles idle     (39,34%)
+        61.425.777      stalled-cycles-backend    #   21,64% backend cycles idle      (51,67%)
+        74.099.551      instructions              #    0,26  insn per cycle         
+                                                  #    0,83  stalled cycles per insn  (58,79%)
+        19.451.331      branches                  #  194,487 M/sec                    (60,66%)
+            19.270      branch-misses             #    0,10% of all branches          (48,33%)
+
+       0,041126642 seconds time elapsed
+
+       0,097460000 seconds user
+       0,003748000 seconds sys
+
+

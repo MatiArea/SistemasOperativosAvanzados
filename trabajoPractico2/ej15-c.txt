@@ -1,0 +1,36 @@
+time mpirun -n 2 ./ej15-b
+real	0m0,249s
+user	0m0,087s
+sys	0m0,108s
+
+time mpirun -n 5 ./ej15-b
+real	0m0,275s
+user	0m0,157s
+sys	0m0,192s
+
+
+time mpirun -n 10 ./ej15-b
+real	0m0,355s
+user	0m0,456s
+sys	0m0,221s
+
+time mpirun -n 50 ./ej15-b
+real	0m1,847s
+user	0m4,716s
+sys	0m1,676s
+
+time mpirun -n 100 ./ej15-b
+real	0m8,259s
+user	0m23,242s
+sys	0m8,798s
+
+time mpirun -n 150 ./ej15-b
+real	0m18,287s
+user	0m51,433s
+sys	0m19,074s
+
+La ejecucion del time fue documentando la ultima linea del printf donde indico que se finaliza la ejecucion, ya que esta linea generaria mayores tiempos.
+
+Basandome en estos datos tomados al momento de la ejecucion, puedo decir que los tiempos aumentan a medida que vamos aumentando subprocesos/threads. Puedo decir que esto
+se debe a que las comunicaciones entre los procesos duran mas tiempo y generan mas cambios de contextos para que el sistema pueda determinar cual es el proceso que sigue
+para ejecutarse.

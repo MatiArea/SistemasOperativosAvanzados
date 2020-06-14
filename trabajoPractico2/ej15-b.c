@@ -9,7 +9,9 @@ int main(int argc, char *argv[]) {
    
     int rank;
     int totalProcs;
-    int arrayPrices[MAXPRODUCTS];
+    float arrayPricesRoot[MAXPRODUCTS];
+    float arrayPricesFinal[MAXPRODUCTS];
+
 
     
     MPI_Init (&argc, &argv); //Inicializo MPI 
@@ -18,26 +20,39 @@ int main(int argc, char *argv[]) {
     
     MPI_Comm_rank(MPI_COMM_WORLD,&rank); //Obtengo el numero del proceso 
 
-    if (rank == 0) {
-        for (int i = 0; i < MAXPRODUCTS; i++) {
-            arrayPrices[i] = pow(i+1,2);            //Genero un numero para cargarle informacion al array
-        }
-    }
+    if((MAXPRODUCTS%totalProcs) == 0) {
 
-    if (rank == 0) {
-        for (int i = 1; i <= totalProcs; i++) {
-            MPI_Send(arrayPrices,MAXPRODUCTS , MPI_INT, i, 0, MPI_COMM_WORLD);
+        int elementPerProc = MAXPRODUCTS/totalProcs;
+        float *arraySlave = malloc(sizeof(float) * elementPerProc);
+        if (rank == 0) {
+            for (int i = 0; i < MAXPRODUCTS; i++) {
+                arrayPricesRoot[i] = i+1;            //Genero un numero para cargarle informacion al array
+            }
         }
-    } 
-    else {
-        MPI_Recv(arrayPrices,MAXPRODUCTS,MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE); 
-        for (int i = rank; i < MAXPRODUCTS; i+= totalProcs); {
-            arrayPrices[i] += round(arrayPrices[i]*0.2);   //Incremento un 20% el valor del array
+
+        MPI_Scatter(arrayPricesRoot, elementPerProc , MPI_FLOAT, arraySlave, elementPerProc, MPI_FLOAT, 0, MPI_COMM_WORLD);
+        
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        for (int i = 0; i < elementPerProc; i++) {
+            arraySlave[i]+=(arraySlave[i]*0.2);
         }
         
+        MPI_Barrier(MPI_COMM_WORLD);
+
+        MPI_Gather(arraySlave, elementPerProc ,MPI_FLOAT, arrayPricesFinal, elementPerProc, MPI_FLOAT, 0, MPI_COMM_WORLD);
+        
+    }
+    else if (rank == 0) {
+            printf("La cantidad de procesos seleccionada no es divisor del total de productos \r\n");
     }
     
+
     MPI_Barrier(MPI_COMM_WORLD);
+ 
+    printf("Finalizando ejecucion Proceso = %d \r\n",rank);
+
     MPI_Finalize(); //Finalizo MPI. Se destruye MPI_COMM_WORLD   
+
     return 0;
 }
