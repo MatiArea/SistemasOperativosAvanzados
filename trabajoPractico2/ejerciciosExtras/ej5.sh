@@ -12,5 +12,5 @@ memory=$(free -mt | grep Mem | awk '{print $4}')
 if [[ $free -le 500 ]];
 then
     echo "Uso de memoria llegando al limite - notificando"
-    mailx -c $destinatario -s $asunto -r $autor -t "Memoria al limite. Memoria libre = 500MB"
+    echo "Memoria al limite. Memoria libre = 500MB" | mail -s $asunto -a FROM:$autor $destinatario
 fi

@@ -20,4 +20,13 @@
        0,076324000 seconds user
        0,000000000 seconds sys
 
+# Datos comando time 
+Contando primos hasta el 10000
+Hay 1231 primos hasta el 10000
+
+real	0m0,081s
+user	0m0,076s
+sys	0m0,004s
+
+
 

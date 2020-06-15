@@ -12,7 +12,7 @@ if if [[ $? == 0 ]];
 then
     if [ ! -s $active ];
     then
-        echo "El servicio $1 esta inactivo - notificando"
-        mailx -c $destinatario -s $asunto -r $autor -t "Servicio $1 = INACTIVO"
+        echo "El servicio $1 esta inactivo - Notificando"
+        echo "Servicio $1 = INACTIVO" | mail -s $asunto -a FROM:$autor $destinatario
     fi
 fi

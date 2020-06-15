@@ -15,13 +15,11 @@ int main (int argc, char *argv[])
   
   MPI_Barrier(MPI_COMM_WORLD); //Barrera 2
 
-  MPI_Barrier(MPI_COMM_WORLD); //Barrera 1
+  MPI_Barrier(MPI_COMM_WORLD); //Barrera 3
   printf( "HOLA MUNDO: proceso %d de %d\n", actual, total );
-  MPI_Barrier(MPI_COMM_WORLD); //Barrera 2
-  
-  MPI_Barrier(MPI_COMM_WORLD); //Barrera 1
+
+  MPI_Barrier(MPI_COMM_WORLD); //Barrera 4s
   printf("CHAU MUNDO: proceso %d de %d \r\n",actual,total); //Nuevo printf colocado
-  MPI_Barrier(MPI_COMM_WORLD); //Barrera 2
 
   /* finaliza MPI */
   MPI_Finalize();

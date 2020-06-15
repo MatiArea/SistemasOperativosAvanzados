@@ -1,0 +1,10 @@
+Como conclusion, a simple vista, se puede decir que no todos los algoritmos que se plantean para resolver una problematica van a resolver de manera optimizada
+dicha problematica. 
+Todo esto se debe a que cuando nosotros pasamos de una programacion secuencial a una programacion en paralelo, debemos tener en cuenta que los procesos
+se van a comunicar por medio de mensajes, y lo que se tarde en realizarse todos los intercambios de mensajes van a definir el tiempo final de ejecucion. 
+
+En estos 3 algoritmos vemos como el mejor rendimiento lo obtenemos en el algoritmo secuencial y el que mas se aproxima a estos resultados es el que utiliza
+OpenMP. 
+En el primosMPI y en el primosOMP vemos que la cantidad de context-switches aumenta, esto lo podemos relacionar a que el sistema operativo debe entrar
+en accion para poder determinar que proceso es el que va a realizar la siguiente accion. En estos 2 casos empezamos a ver que los tiempos aumentan, asi 
+tambien como van a aumentando los niveles de error en paginacion y el nivel de uso y cantidad de CPU que se requiere para correr el algoritmo. 

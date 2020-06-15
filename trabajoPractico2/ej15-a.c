@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
 {
     int arrayPrices[MAXPRODUCTS];
 
-    printf("Inciando la ejecucion\r\n");
+    printf("Iniciando la ejecucion\r\n");
 
     for (int i = 0; i < MAXPRODUCTS; i++) {
         arrayPrices[i] = pow(i+1,2);            //Genero un numero para cargarle informacion al array
